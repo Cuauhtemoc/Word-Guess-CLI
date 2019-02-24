@@ -10,7 +10,6 @@ function Word(word){
             return letter.displayLetter();
         })
         console.log(this.wordArray.join(" ")); 
-        return this.wordArray;
     }
     this.checkGuess = function(char){
         for (i = 0; i < this.underlyingWord.length; i++)

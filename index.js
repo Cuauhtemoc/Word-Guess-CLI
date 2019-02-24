@@ -1,16 +1,20 @@
 var inquirer = require("inquirer");
-var words = ["Awkward", "Bagpipes", "Banjo", "Bungler", "Croquet", "Crypt", "Dwarves", "Fervid"]
 var Word = require("./word.js")
+
+var words = ["Awkward", "Bagpipes", "Banjo", "Bungler", "Croquet", "Crypt", "Dwarves", "Fervid"]
 var currentIndex = 0;
 var currentWord;
+var remainingGuesses = 20;
 
 function chooseWord(){
+    remainingGuesses = 20;
     currentWord = new Word(words[currentIndex]);
     currentWord.displayWord();
 }
 
 function promptPlayer(){
     var win;
+    console.log("Remaining Guesses: " + remainingGuesses);
     for (i = 0; i < currentWord.underlyingWord.length; i++)
     {
         if (currentWord.underlyingWord[i].isFound === false)
@@ -49,8 +53,16 @@ function promptPlayer(){
             name: "playerGuess",
             }
         ]).then(function(answers){
-            currentWord.checkGuess(answers.playerGuess);
-            promptPlayer();
+            remainingGuesses--;
+            if (remainingGuesses === 0 )
+            {
+                console.log("You are out of guesses, gameover")
+            }
+            else if (remainingGuesses > 0)
+            {
+                currentWord.checkGuess(answers.playerGuess);
+                promptPlayer();
+            }
         })
     }
  
