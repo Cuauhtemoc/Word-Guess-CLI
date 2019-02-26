@@ -20,6 +20,7 @@ function promptPlayer(){
         if (currentWord.underlyingWord[i].isFound === false)
         {
             win = false;
+            break
         }
         else 
             win = true;
@@ -69,3 +70,4 @@ function promptPlayer(){
 }
 chooseWord();
 promptPlayer();
+ 
