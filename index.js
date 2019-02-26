@@ -1,17 +1,24 @@
+//modules required to run the game
 var inquirer = require("inquirer");
 var Word = require("./word.js")
 
+//variables to keep track of the current word and game state
 var words = ["Awkward", "Bagpipes", "Banjo", "Bungler", "Croquet", "Crypt", "Dwarves", "Fervid"]
 var currentIndex = 0;
 var currentWord;
 var remainingGuesses = 20;
 
+
+//choose a new string from an array and contruct a Word object
 function chooseWord(){
     remainingGuesses = 20;
     currentWord = new Word(words[currentIndex]);
     currentWord.displayWord();
 }
 
+
+//prompt the player to guess a letter, check if that letter is in the word, if that letter is in the word reveal it, 
+//subtarct from remaining guesses.  recursively call this funciton until the word is solved or the player runs out of guesses
 function promptPlayer(){
     var win;
     console.log("Remaining Guesses: " + remainingGuesses);
