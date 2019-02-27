@@ -3,7 +3,7 @@ var inquirer = require("inquirer");
 var Word = require("./word.js")
 
 //variables to keep track of the current word and game state
-var words = ["Awkward", "Bagpipes", "Banjo", "Bungler", "Croquet", "Crypt", "Dwarves", "Fervid"]
+var words = ["awkward", "bagpipes", "banjo", "bungler", "croquet", "crypt", "dwarves", "fervid"]
 var currentIndex = 0;
 var currentWord;
 var remainingGuesses = 20;
@@ -30,7 +30,7 @@ function promptPlayer(){
             break
         }
         else 
-            win = true;
+            win = true
     }
     if (win){
         inquirer.prompt([
@@ -61,7 +61,6 @@ function promptPlayer(){
             name: "playerGuess",
             }
         ]).then(function(answers){
-            remainingGuesses--;
             if (remainingGuesses === 0 )
             {
                 console.log("You are out of guesses, gameover")
